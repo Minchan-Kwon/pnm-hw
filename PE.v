@@ -39,7 +39,7 @@ module PE #(
     wire is_hadamard = (opcode == OP_HADAMARD);
 
     ////////////////////////////// Multipliers //////////////////////////////
-    reg signed [2*PRECISION-1:0] product [0:WAY-1];
+    wire signed [2*PRECISION-1:0] product [0:WAY-1];
 
     genvar i;
     generate
