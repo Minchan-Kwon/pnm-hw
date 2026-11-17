@@ -82,14 +82,14 @@ def export_hex(path, gold, scale_bits):
 if __name__ == "__main__":
     import time
     t = time.time()
-    gold, band = build()
+    gold, scale_type = build()
     np.save("golden.npy", gold)
-    np.save("scale_band.npy", band)
+    np.save("scale_type.npy", scale_type)
     names = {INVALID: "invalid", HALF: "half (s<2^-13)", ACTIVE: "active", RELU: "relu (s>=1)"}
     for b, n in names.items():
-        k = int((band == b).sum())
+        k = int((scale_type == b).sum())
         print(f"{n:16s}: {k:6d} scales x 256 q = {k * 256:9,d} vectors")
-    n_active = export_hex("golden_active.hex", gold, np.where(band == ACTIVE)[0])
-    n_valid = export_hex("golden_all_valid.hex", gold, np.where(band != INVALID)[0])
-    print(f"Generated golden.npy, scale_band.npy, golden_active.hex ({n_active:,}), "
+    n_active = export_hex("golden_active.hex", gold, np.where(scale_type == ACTIVE)[0])
+    n_valid = export_hex("golden_all_valid.hex", gold, np.where(scale_type != INVALID)[0])
+    print(f"Generated golden.npy, scale_type.npy, golden_active.hex ({n_active:,}), "
           f"golden_all_valid.hex ({n_valid:,})  in {time.time() - t:.1f}s")
