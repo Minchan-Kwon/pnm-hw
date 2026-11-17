@@ -2,7 +2,7 @@
 // SiLU activation accelerator for MoE inference on SSDs
 // SPECs to be decided
 
-module silu_a_top (clk, rstn, q_in, scale_in, y);
+module silu_top (clk, rstn, q_in, scale_in, y);
 `include "silu_params.vh"
     input  wire        clk;
     input  wire        rstn;
