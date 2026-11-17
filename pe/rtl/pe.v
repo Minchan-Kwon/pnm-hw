@@ -4,7 +4,7 @@
 // Multiplication is performed in INT8 and accumulation is done in INT32
 // Requantizes the INT32 accumulation into INT8
 
-module PE #(
+module pe #(
     parameter WAY = 16,        // Number of parallel multipliers
     parameter PRECISION = 8,   // INT8: 8, FP16/BF16: 16, INT32: 32
     parameter ACC_WIDTH = 30   // Accumulator width
