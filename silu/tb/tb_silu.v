@@ -13,7 +13,7 @@ module tb_silu;
     reg [15:0] s    = 16'd0;
     wire [7:0] y;
 
-    silu_a_top dut (.clk(clk), .rstn(rstn), .q_in(q), .scale_in(s), .y(y));
+    silu_top dut (.clk(clk), .rstn(rstn), .q_in(q), .scale_in(s), .y(y));
 
     reg [31:0] v [0:N-1];
     integer i, errors;
